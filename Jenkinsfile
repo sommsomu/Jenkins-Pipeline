@@ -11,16 +11,22 @@ pipeline {
             steps {
                 sh '''
                     ls -lrt
+<<<<<<< HEAD
                     echo $DEBUG_BUILD
                     sleep 2
+=======
+                    pwd
+                    sleep 5
+>>>>>>> d87fe54dbd7bd43a03445422892773f9bbc34f8d
                 '''
             }
         }
 
         stage('STAGE_02') {
-          agent { label 'slave2' }
+          agent { label 'master' }
             steps {
                 sh '''
+                    pwd
                     sleep 5
                 '''
             }
