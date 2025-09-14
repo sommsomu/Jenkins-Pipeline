@@ -1,5 +1,9 @@
 pipeline {
     agent none
+    parameters{
+      booleanParam(name: 'DEBUG_BUILD', defaultValue: true, description: '')
+      choice(name: 'CHOICES', choices: ['one','two', 'three'], description: '')
+    }
 
     stages {
         stage('STAGE_01') {
@@ -7,7 +11,8 @@ pipeline {
             steps {
                 sh '''
                     ls -lrt
-                    pwd
+                    echo $DEBUG_BUILD
+                    sleep 2
                 '''
             }
         }
