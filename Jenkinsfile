@@ -8,6 +8,7 @@ pipeline {
                 sh '''
                     ls -lrt
                     pwd
+                    sleep 5
                 '''
             }
         }
@@ -16,6 +17,7 @@ pipeline {
           agent { label 'slave2' }
             steps {
                 sh '''
+                    pwd
                     sleep 5
                 '''
             }
