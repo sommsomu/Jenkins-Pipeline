@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   stages {
-    stage('STAGE_1'){
+    stage('STAGE_01'){
       steps {
         sh '''
         ls -lrt
@@ -12,7 +12,7 @@ pipeline {
     }
   }
   stages {
-    stage('STAGE_2'){
+    stage('STAGE_02'){
       steps {
         sh '''
         sleep 5
