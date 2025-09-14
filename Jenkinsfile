@@ -11,13 +11,8 @@ pipeline {
             steps {
                 sh '''
                     ls -lrt
-<<<<<<< HEAD
                     echo $DEBUG_BUILD
                     sleep 2
-=======
-                    pwd
-                    sleep 5
->>>>>>> d87fe54dbd7bd43a03445422892773f9bbc34f8d
                 '''
             }
         }
@@ -26,6 +21,7 @@ pipeline {
           agent { label 'master' }
             steps {
                 sh '''
+                    echo $CHOICES
                     pwd
                     sleep 5
                 '''
