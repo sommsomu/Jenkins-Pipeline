@@ -23,6 +23,17 @@ pipeline {
             }
         }
 
+        stage ('Check code quality'){
+
+            steps{
+                '''
+                pwd
+                ls -lrt
+                '''
+            }
+        }
+
+
     }
 
 }
