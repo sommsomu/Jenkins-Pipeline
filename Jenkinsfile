@@ -1,39 +1,42 @@
 pipeline {
-    agent any
+        agent any
 
-    stages {
-        stage ('Checkout'){
-            steps{
-               git branch: 'main', 
-               credentialsId: 'github_apps', 
-               url: 'https://github.com/sommsomu/JulyRepo.git' 
+        stages {
+            stage ('checkIn') {
+                steps {
+                    git branch: 'main', 
+                    credentialsId: 'github_apps', 
+                    url: 'https://github.com/sommsomu/JulyRepo.git'
+                }
             }
-        }
 
-        stage ('build'){
-            steps{
-               sh '''
-               ls -lrt
-               '''
+            
+            stage ('Parallel Execution') {
+                parallel {
+                    stage('Check code quality'){
+                        steps {
+                            sh '''
+                            ls -lrt
+                            pwd
+                            sleep 5
+                            '''
+                        }
+                    }
+
+                    stage ('Build') {
+                        steps{
+                            sh '''
+                            pwd
+                            ls -lrt
+                            sleep 5
+                            '''
+            
+                        }
+                    }
+                    
+                }
+        
             }
+ 
         }
-        stage ('checkout git'){
-            steps{
-               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_apps', url: 'https://github.com/sommsomu/Jenkins-Pipeline.git']])
-            }
-        }
-
-        stage ('Check code quality'){
-
-            steps{
-                sh '''
-                pwd
-                ls -lrt
-                '''
-            }
-        }
-
-
-    }
-
 }
