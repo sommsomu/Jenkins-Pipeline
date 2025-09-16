@@ -26,7 +26,7 @@ pipeline {
         stage ('Check code quality'){
 
             steps{
-                '''
+                sh '''
                 pwd
                 ls -lrt
                 '''
