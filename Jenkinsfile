@@ -17,6 +17,11 @@ pipeline {
                '''
             }
         }
+        stage ('checkout git'){
+            steps{
+               checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_apps', url: 'https://github.com/sommsomu/Jenkins-Pipeline.git']])
+            }
+        }
 
     }
 
